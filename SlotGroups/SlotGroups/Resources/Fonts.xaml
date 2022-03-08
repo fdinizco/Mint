@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="SlotGroups.Resources.Fonts">
+    <!-- Fonts -->
+    <Style x:Key="FontAwesomeBrands" TargetType="Label">
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontFamily">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="FontAwesome6Brands400" />
+                        <On Platform="Android" Value="Font Awesome 6 Brands-Regular-400.otf#Font Awesome 6 Brands" />
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+    </Style>
+    <Style x:Key="FontAwesomeRegular" TargetType="Label">
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontFamily">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="FontAwesome6Regular400" />
+                        <On Platform="Android" Value="Font Awesome 6 Free-Regular-400.otf#Font Awesome 6 Regular" />
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+    </Style>
+    <Style x:Key="FontAwesomeSolid" TargetType="Label">
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontFamily">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="FontAwesome6Solid900" />
+                        <On Platform="Android" Value="Font Awesome 6 Free-Solid-900.otf#Font Awesome 6 Solid" />
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+    </Style>    
+               
+</ResourceDictionary>
