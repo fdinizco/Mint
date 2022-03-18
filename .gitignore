@@ -568,6 +568,10 @@ FodyWeavers.xsd
 *.code-workspace
 
 # Local History for Visual Studio Code
+*/**/bin/Debug
+*/**/bin/Release
+*/**/obj/Debug
+*/**/obj/Release
 
 # Windows Installer files from build outputs
 *.cab
