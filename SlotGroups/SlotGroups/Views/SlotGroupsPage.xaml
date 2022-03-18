@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:image="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:constants="clr-namespace:SlotGroups.Common;assembly=SlotGroups"
+             xmlns:controls="clr-namespace:SlotGroups.Controls;assembly=SlotGroups"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="SlotGroups.Views.SlotGroupsPage"
+             ios:Page.UseSafeArea="true">
+    <StackLayout HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand">
+            <ActivityIndicator IsRunning="true"
+                       IsVisible="{Binding IsBusy}"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="CenterAndExpand"/>
+
+            <Grid      HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       Padding="17,21,17,0"
+                       IsVisible="{Binding IsBusy, Converter={StaticResource BooleanInverse}}"
+                       RowSpacing="10"
+                       x:Name="Content"
+                       Style="{StaticResource SafeAreaGrid}">
+                       <Grid.RowDefinitions>
+                          <RowDefinition Height="22"/> 
+                          <RowDefinition Height="35"/> 
+                          <RowDefinition Height="35"/>
+                          <RowDefinition Height="24"/>
+                          <RowDefinition Height="*"/> <!--This fill the empty space-->
+                        </Grid.RowDefinitions>
+                        <!-- Navigation Bar -->
+                        <controls:UINavigationBar   Grid.Row="0"
+                                                    Title="{Binding Title}"
+                                                    LeftIcon="{Binding Source={x:Static constants:AppConstants.BackImage}}"
+                                                    LeftIconCommand="{Binding BackCommand}"
+                                                    VerticalOptions="FillAndExpand"
+                                                    HorizontalOptions="FillAndExpand"/>
+
+                         <CollectionView Grid.Row="1"
+                                         ItemsSource="{Binding GroupName}"
+                                         VerticalOptions="FillAndExpand"
+                                         HorizontalOptions="FillAndExpand">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="20"/>
+                            </CollectionView.ItemsLayout>
+                        </CollectionView>
+                        <Grid  HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="7*"/> 
+                                <ColumnDefinition Width="Auto"/> 
+                            </Grid.ColumnDefinitions>
+                            <Frame
+                                   Grid.Column="0"
+                                   CornerRadius="10"  
+                                   OutlineColor="LightGray"
+                                   BackgroundColor="LightGray"
+                                   Padding="0"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand">
+                               <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding SearchComand}"/>
+                                </Frame.GestureRecognizers>
+                                <Entry VerticalOptions="FillAndExpand"
+                                       HorizontalOptions="FillAndExpand"/>
+                            </Frame>
+                            <Label Grid.Column="1"
+                                   IsVisible="{Binding SearchActivated}"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   Text="Cancel">
+                                   <Label.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding CancelComand}"/>
+                                   </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+            </Grid>
+    </StackLayout>
+</ContentPage>
+   

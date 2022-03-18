@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:image="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             x:Name="NavigationBar"
+             x:Class="SlotGroups.Controls.UINavigationBar">
+        <Grid VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="7,0" ColumnDefinitions="1*, 8*, 1*">
+            <image:SvgCachedImage
+                   Source="{Binding Source={x:Reference NavigationBar}, Path=LeftIcon}"
+                   HeightRequest="8"
+                   WidthRequest="5"
+                   DownsampleUseDipUnits="True"
+                   DownsampleToViewSize="True"
+                   Grid.Column="0">
+                   <image:SvgCachedImage.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference NavigationBar}, Path=LeftIconCommand}"/>
+                    </image:SvgCachedImage.GestureRecognizers>
+            </image:SvgCachedImage>
+            <Label Grid.Column="1"
+                   Text="{Binding Source={x:Reference NavigationBar}, Path=Title}"
+                   FontSize="16"
+                   FontFamily="{StaticResource SourceSansProSemibold}"
+                   TextColor="Black"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"/>
+        </Grid>
+</ContentView>
